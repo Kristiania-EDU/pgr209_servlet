@@ -1,5 +1,7 @@
 package no.edu.library;
 
+import org.eclipse.jetty.apache.jsp.JettyJasperInitializer;
+import org.eclipse.jetty.jsp.JettyJspServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
@@ -18,10 +20,11 @@ public class LibraryServer {
 
     public void start() throws Exception {
         var webApp = new WebAppContext(
-            Resource.newClassPathResource("/webapp.library"), "/");
+            Resource.newClassPathResource("/webapp"), "/");
 
         webApp.addServlet(new ServletHolder(new AddBookServlet(bookRepository)), "/api/addBook");
         webApp.addServlet(new ServletHolder(new ListBooksServlet(bookRepository)), "/api/books/*");
+        webApp.addServletContainerInitializer(new JettyJasperInitializer());
 
         server.setHandler(webApp);
         server.start();

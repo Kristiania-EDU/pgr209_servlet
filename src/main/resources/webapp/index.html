@@ -5,15 +5,33 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jetty</title>
+    <title>Library</title>
 </head>
 <body>
-    <div>
-        <h1>Hello!</h1>
-        <h2>Welcome to my Jetty server</h2>
+    <h1>Hello!</h1>
+    <h2>Welcome to my Library</h2>
 
+    <div style="display: flex; gap: .5rem;">
+        <a href="#addBook">Add a book</a>
+        <a href="/api/books/all">List of books</a>
+    </div>
 
+    <div id="addBook">
+        <h3>Add a book to my library</h3>
 
+        <form action="/api/addBook" method="POST">
+            <div>
+                <label>Title</label>
+                <input type="text" name="bookTitle" />
+            </div>
+            <div>
+                <label>Author</label>
+                <input type="text" name="bookAuthor"/>
+            </div>
+            <div>
+                <button type="submit">Add book</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
