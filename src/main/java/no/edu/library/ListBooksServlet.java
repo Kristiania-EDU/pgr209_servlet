@@ -19,18 +19,16 @@ public class ListBooksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var path = req.getPathInfo().substring(1);
-        var page = new StringBuilder();
-
+        var writer = resp.getWriter();
         resp.setContentType("text/html");
 
-        page.append(String.format("<h1>Here are all the books in the category of: \"%s\"</h1>", path));
-        page.append("<ul>");
+        writer.write(String.format("<h1>Here are all the books in the category of: \"%s\"</h1>", path));
+        writer.write("<ul>");
 
         for(var book : bookRepository.listAll()) {
-            page.append(String.format("<li>%s</li>", book.toString()));
+            writer.write(String.format("<li>%s</li>", book.toString()));
         }
 
-        page.append("</ul>");
-        resp.getWriter().write(page.toString());
+        writer.write("</ul>");
     }
 }
