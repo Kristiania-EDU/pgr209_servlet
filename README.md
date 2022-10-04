@@ -2,7 +2,7 @@
 
 Http server representing a library solution
 
-* [ ] Maven project
+* [X] Maven project
 * [ ] Add a book
 * [ ] List books
 * [ ] Servlet API
