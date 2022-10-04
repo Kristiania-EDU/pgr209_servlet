@@ -11,20 +11,27 @@
     <h1>Hello!</h1>
     <h2>Welcome to my Library</h2>
 
-    <h3>Add a book to my library</h3>
+    <div style="display: flex; gap: .5rem;">
+        <a href="#addBook">Add a book</a>
+        <a href="/api/books/all">List of books</a>
+    </div>
 
-    <form action="/api/addBook" method="POST">
-        <div>
-            <label>Title</label>
-            <input type="text" name="bookTitle" />
-        </div>
-        <div>
-            <label>Author</label>
-            <input type="text" name="bookAuthor"/>
-        </div>
-        <div>
-            <button type="submit">Add book</button>
-        </div>
-    </form>
+    <div id="addBook">
+        <h3>Add a book to my library</h3>
+
+        <form action="/api/addBook" method="POST">
+            <div>
+                <label>Title</label>
+                <input type="text" name="bookTitle" />
+            </div>
+            <div>
+                <label>Author</label>
+                <input type="text" name="bookAuthor"/>
+            </div>
+            <div>
+                <button type="submit">Add book</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
