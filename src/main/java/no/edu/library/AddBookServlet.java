@@ -11,6 +11,11 @@ import java.io.IOException;
 
 public class AddBookServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(AddBookServlet.class);
+    private final BookRepository bookRepository;
+
+    public AddBookServlet(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,6 +24,7 @@ public class AddBookServlet extends HttpServlet {
         var book = new Book(bookAuthor, bookTitle);
 
         logger.info("Adding book -> {}", book);
-    }
 
+        bookRepository.add(book);
+    }
 }
