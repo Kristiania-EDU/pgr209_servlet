@@ -1,6 +1,7 @@
 package no.edu.library;
 
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
@@ -11,12 +12,12 @@ public class LibraryServer {
     private final Server server = new Server(9080);
 
     public void start() throws Exception {
-        server.setHandler(new WebAppContext(
-            Resource.newClassPathResource("/webapp"), "/"));
+        var webApp = new WebAppContext(
+            Resource.newClassPathResource("/webapp.library"), "/");
 
-        server.setHandler(new WebAppContext(
-            Resource.newClassPathResource("/webapp.library"), "/library"));
+        webApp.addServlet(new ServletHolder(new AddBookServlet()), "/api/addBook");
 
+        server.setHandler(webApp);
         server.start();
         logger.info("Started server on {}", server.getURI());
     }

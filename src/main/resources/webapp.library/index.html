@@ -10,5 +10,21 @@
 <body>
     <h1>Hello!</h1>
     <h2>Welcome to my Library</h2>
+
+    <h3>Add a book to my library</h3>
+
+    <form action="/api/addBook" method="POST">
+        <div>
+            <label>Title</label>
+            <input type="text" name="bookTitle" />
+        </div>
+        <div>
+            <label>Author</label>
+            <input type="text" name="bookAuthor"/>
+        </div>
+        <div>
+            <button type="submit">Add book</button>
+        </div>
+    </form>
 </body>
 </html>
